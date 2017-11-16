@@ -3,9 +3,13 @@ angular.module('myApp')
 
        this.username = '';
        this.password = '';
+       this.address = '';
+       this.id;
 
         return {
             username : this.username,
-            password: this.password
+            password: this.password,
+            address: this.address,
+            id: this.id
         };
     });
