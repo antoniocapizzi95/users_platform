@@ -1,0 +1,33 @@
+<div ng-show="Surveys.list" layout="column">
+    <md-card ng-repeat="surv in Surveys.surveys" ng-click="Surveys.selectSurvey(surv.object)">
+        {{surv.object.name}}
+    </md-card>
+</div>
+<div ng-hide="Surveys.list" layout="column">
+    <div class="md-title">{{Surveys.selectedSurvey.name}}</div>
+    <md-input-container>
+        <label>Place</label>
+        <input ng-model="Surveys.place">
+    </md-input-container>
+    <md-input-container>
+        <label>Date</label>
+        <input ng-model="Surveys.date">
+    </md-input-container>
+    <md-input-container>
+        <label>Note</label>
+        <input ng-model="Surveys.note">
+    </md-input-container>
+    <div class="md-subhead">Questions:</div>
+    <div ng-repeat="quest in Surveys.selectedSurvey.questions">
+
+        <md-input-container>
+            <label>{{quest}}</label>
+            <input ng-model="Surveys.answers[$index]">
+        </md-input-container>
+    </div>
+    <div layout="row">
+        <md-button ng-click="Surveys.confirm()">Confirm</md-button>
+        <md-button ng-click="Surveys.cancel()">Cancel</md-button>
+    </div>
+
+</div>
