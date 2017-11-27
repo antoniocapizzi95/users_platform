@@ -60,7 +60,7 @@
             }
         }
         vm.confirm = function () {
-            var obj = {surv_name:vm.selectedSurvey.name, user:LoginService.username,date:vm.date,note:vm.note,place: vm.place,questions:vm.selectedSurvey.questions,answers: vm.answers};
+            var obj = {surv_name:vm.selectedSurvey.name, description:vm.selectedSurvey.description,user:LoginService.username,date:vm.date,note:vm.note,place: vm.place,questions:vm.selectedSurvey.questions,answers: vm.answers};
             var param = JSON.stringify(obj);
 
             $http({

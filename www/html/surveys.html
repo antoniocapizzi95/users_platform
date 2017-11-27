@@ -5,6 +5,7 @@
 </div>
 <div ng-hide="Surveys.list" layout="column">
     <div class="md-title">{{Surveys.selectedSurvey.name}}</div>
+    <div class="md-subhead">Description: {{Surveys.selectedSurvey.description}}</div>
     <md-input-container>
         <label>Place</label>
         <input ng-model="Surveys.place">
