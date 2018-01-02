@@ -19,12 +19,11 @@
         vm.note = '';
 
         function getAssociations() {
-            var param = JSON.stringify({id:LoginService.id});
+            var param = JSON.stringify({id:LoginService.id,source:"up"});
 
             $http({
-                method: 'POST',
-                url: 'http://'+LoginService.address+'/mydb/getAssociations_up.php',
-                data: "message=" + param,
+                method: 'GET',
+                url: 'http://'+LoginService.address+'/mydb/associations.php/'+param,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                 .then(function (response) {
@@ -36,7 +35,7 @@
         getAssociations();
 
         function getSurveys() {
-            $http.get("http://"+LoginService.address+"/mydb/getSurveys.php")
+            $http.get("http://"+LoginService.address+"/mydb/surveys.php")
                 .then(function (response) {
                     var input = JSON.parse(response.data);
                     var allSurv = input.records;
@@ -65,7 +64,7 @@
 
             $http({
                 method: 'POST',
-                url: 'http://'+LoginService.address+'/mydb/addAnswers.php',
+                url: 'http://'+LoginService.address+'/mydb/answers.php',
                 data: "message=" + param,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
