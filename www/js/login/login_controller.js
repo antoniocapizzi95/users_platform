@@ -33,6 +33,7 @@
                             LoginService.username = vm.username;
                             LoginService.password = vm.password;
                             LoginService.id = id;
+                            LoginService.isLogged = true;
                             $location.path("/surveys");
 
                         } else {

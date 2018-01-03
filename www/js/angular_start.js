@@ -1,4 +1,4 @@
-var usersplat = angular.module("myApp", ['ngRoute','ngMaterial','myApp.login','myApp.surveys'])
+var usersplat = angular.module("myApp", ['ngRoute','ngMaterial','myApp.login','myApp.surveys','myApp.compSurveys'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/login', {
@@ -11,19 +11,20 @@ var usersplat = angular.module("myApp", ['ngRoute','ngMaterial','myApp.login','m
                 controller: 'surveysCtrl',
                 controllerAs: 'Surveys'
             })
-            /*.when('/settings', {
-                templateUrl: "settings/settings.html",
-                controller: 'settingsCtrl',
-                controllerAs: 'Settings'
+            .when('/compSurveys', {
+                templateUrl: "html/compSurveys.html",
+                controller: 'compSurveysCtrl',
+                controllerAs: 'CompSurveys'
             })
 
-            .when('/newSurvey', {
+            /*.when('/newSurvey', {
                 templateUrl: "surveys/newSurvey.html",
                 controller: 'newSurveyCtrl',
                 controllerAs: 'NewSurvey'
             })*/
 
     }])
+
 
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');

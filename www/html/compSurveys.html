@@ -1,0 +1,10 @@
+<div layout="row" style="background-color: white">
+    <md-button goto="/surveys" style="font-size: 11px;">Available Surveys</md-button>
+    <md-button goto="/compSurveys" style="font-size: 11px;">Compiled Surveys</md-button>
+    <md-button style="font-size: 11px;">Settings</md-button>
+</div>
+
+<div layout="column">
+    <h2 class="md-title" layout-padding>Compiled Surveys</h2>
+    <md-card layout-padding ng-repeat="ans in CompSurveys.answers">{{ans.object.surv_name}}</md-card>
+</div>
