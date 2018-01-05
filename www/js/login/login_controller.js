@@ -11,7 +11,7 @@
         var vm = this;
         vm.username = '';
         vm.password = '';
-        vm.address = '192.168.1.52';
+        vm.address = 'antoniocapizzi95.altervista.org';
         vm.message = '';
 
         vm.login = function () {

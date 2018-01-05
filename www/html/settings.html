@@ -1,0 +1,10 @@
+<div layout="row" layout-align="center center" layout padding>
+    <md-card layout-padding>
+        <md-input-container>
+            <label>Server Address</label>
+            <input name="address" ng-model="Settings.address" required>
+        </md-input-container>
+        <md-button ng-click="Settings.changeServer()">Change Server</md-button>
+        <div>{{Settings.message}}</div>
+    </md-card>
+</div>

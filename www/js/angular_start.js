@@ -1,4 +1,4 @@
-var usersplat = angular.module("myApp", ['ngRoute','ngMaterial','myApp.login','myApp.surveys','myApp.compSurveys'])
+var usersplat = angular.module("myApp", ['ngRoute','ngMaterial','myApp.login','myApp.surveys','myApp.compSurveys','myApp.settings'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/login', {
@@ -17,11 +17,11 @@ var usersplat = angular.module("myApp", ['ngRoute','ngMaterial','myApp.login','m
                 controllerAs: 'CompSurveys'
             })
 
-            /*.when('/newSurvey', {
-                templateUrl: "surveys/newSurvey.html",
-                controller: 'newSurveyCtrl',
-                controllerAs: 'NewSurvey'
-            })*/
+            .when('/settings', {
+                templateUrl: "html/settings.html",
+                controller: 'settingsCtrl',
+                controllerAs: 'Settings'
+            })
 
     }])
 

@@ -10,6 +10,8 @@
 
         var vm = this;
         vm.answers = [];
+        vm.list = true;
+        vm.selectedSurv;
         $http({
             method: 'GET',
             url: 'http://'+LoginService.address+'/mydb/answers.php/',
@@ -25,6 +27,10 @@
                 }
 
             });
+        vm.showThisResult = function(ans) {
+            vm.list = false;
+            vm.selectedSurv = ans;
+        }
 
 
     }

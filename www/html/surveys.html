@@ -4,15 +4,19 @@
     <md-button style="font-size: 11px;">Settings</md-button>
 </div>
 
-<div ng-show="Surveys.list" layout="column">
+<div ng-show="Surveys.list" layout="column" layout-padding>
 
     <h2 class="md-title" layout-padding>Available Surveys</h2>
 
-    <md-card ng-repeat="surv in Surveys.surveys" ng-click="Surveys.selectSurvey(surv.object)">
-        {{surv.object.name}}
-    </md-card>
+    <div layout="row" layout-wrap>
+        <md-card ng-repeat="surv in Surveys.surveys" layout-padding ng-click="Surveys.selectSurvey(surv.object)" class="pointer">
+            {{surv.object.name}}
+        </md-card>
+    </div>
+
+
 </div>
-<div ng-hide="Surveys.list" layout="column">
+<div ng-hide="Surveys.list" layout="column" layout-padding>
     <div class="md-title">{{Surveys.selectedSurvey.name}}</div>
     <div class="md-subhead">Description: {{Surveys.selectedSurvey.description}}</div>
     <md-input-container>
