@@ -1,7 +1,7 @@
 <div layout="row" style="background-color: white">
-    <md-button goto="/surveys" style="font-size: 11px;">Available Surveys</md-button>
-    <md-button goto="/compSurveys" style="font-size: 11px;">Compiled Surveys</md-button>
-    <md-button style="font-size: 11px;">Settings</md-button>
+    <md-button goto="/surveys" class="font_size_button">Available Surveys</md-button>
+    <md-button goto="/compSurveys" class="font_size_button">Compiled Surveys</md-button>
+    <md-button goto="/settings" class="font_size_button">Settings</md-button>
 </div>
 
 <div layout="column" ng-show="CompSurveys.list" layout-padding>
@@ -30,6 +30,6 @@
         <div>Question {{$index + 1}}: {{q}}</div>
         <div>Answer {{$index + 1}}: {{CompSurveys.selectedSurv.answers[$index]}}</div>
     </div>
-    <md-button ng-click="CompSurveys.list = true">Back</md-button>
+    <md-button ng-click="CompSurveys.list = true" class="font_size_button">Back</md-button>
 
 </div>

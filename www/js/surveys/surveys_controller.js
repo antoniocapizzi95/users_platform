@@ -18,6 +18,8 @@
         vm.place = '';
         vm.note = '';
 
+        vm.message = '';
+
         function getAssociations() {
             var param = JSON.stringify({id:LoginService.id,source:"up"});
 
@@ -59,24 +61,29 @@
             }
         }
         vm.confirm = function () {
-            var obj = {surv_name:vm.selectedSurvey.name, description:vm.selectedSurvey.description,user:LoginService.username,date:vm.date,note:vm.note,place: vm.place,questions:vm.selectedSurvey.questions,answers: vm.answers};
-            var param = JSON.stringify(obj);
+            if(vm.place == '' || vm.date == '') {
+                vm.message ='Required fields is empty'
 
-            $http({
-                method: 'POST',
-                url: 'http://'+LoginService.address+'/mydb/answers.php',
-                data: "message=" + param,
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })
-                .then(function (response) {
-                    vm.list = true;
-                    vm.answers = [];
-                    vm.selectedSurvey = undefined;
-                    vm.date = '';
-                    vm.note = '';
-                    vm.place = '';
+            } else {
+                var obj = {surv_name:vm.selectedSurvey.name, description:vm.selectedSurvey.description,user:LoginService.username,date:vm.date,note:vm.note,place: vm.place,questions:vm.selectedSurvey.questions,answers: vm.answers};
+                var param = JSON.stringify(obj);
 
-                });
+                $http({
+                    method: 'POST',
+                    url: 'http://'+LoginService.address+'/mydb/answers.php',
+                    data: "message=" + param,
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                })
+                    .then(function (response) {
+                        vm.list = true;
+                        vm.answers = [];
+                        vm.selectedSurvey = undefined;
+                        vm.date = '';
+                        vm.note = '';
+                        vm.place = '';
+
+                    });
+            }
 
 
         }

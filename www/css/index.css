@@ -117,3 +117,7 @@ h1 {
 .pointer {
     cursor: pointer;
 }
+
+.font_size_button {
+    font-size: 11px;
+}
