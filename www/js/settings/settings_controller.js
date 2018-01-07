@@ -14,8 +14,23 @@
         vm.message = '';
 
         vm.changeServer = function () {
-            LoginService.address = vm.address;
-            vm.message = "Server changed"
+            var param = JSON.stringify({username:LoginService.username,password:LoginService.password});
+
+            $http({
+                method: 'POST',
+                url: 'http://'+vm.address+'/mydb/login.php',
+                data: "message=" + param,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+                .success(function (response) {
+                    LoginService.address = vm.address;
+                    vm.message = "Server changed";
+
+                })
+                .error(function (msg) {
+                    vm.message = 'The server address is wrong';
+                });
+
         }
 
         vm.logout = function () {

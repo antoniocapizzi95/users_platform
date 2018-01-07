@@ -1,4 +1,4 @@
-<div layout="row" layout-align="center center" layout-padding>
+<div layout="row" layout-align="start center" layout-padding>
     <div layout="column">
         <md-input-container>
             <label>Server Address</label>
@@ -12,8 +12,9 @@
             <label>Password</label>
             <input name="password" type="password" ng-model="Login.password" required>
         </md-input-container>
+        <div style="color:red">{{Login.message}}</div>
         <md-button ng-click="Login.login()">Login</md-button>
-        {{Login.message}}
+
     </div>
 
 </div>

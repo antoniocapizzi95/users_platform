@@ -10,7 +10,6 @@ angular.module('myApp')
        this.reset = function () {
            this.username = '';
            this.password = '';
-           this.address = '';
            this.id;
            this.isLogged = false;
        };

@@ -24,8 +24,8 @@
                     data: "message=" + param,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 })
-                    .then(function (response) {
-                        var input = JSON.parse(response.data);
+                    .success(function (response) {
+                        var input = JSON.parse(response);
                         var resp = input.records[0].result;
                         var id = input.records[0].id;
                         if(resp) {
@@ -37,12 +37,14 @@
                             $location.path("/surveys");
 
                         } else {
-                            vm.address = '';
                             vm.username = '';
                             vm.password = '';
-                            vm.message = "Server address or username or password are incorrect";
+                            vm.message = "Username or password are incorrect";
                         }
 
+                    })
+                    .error(function (msg) {
+                        vm.message = 'The server address is wrong';
                     });
             }
 
