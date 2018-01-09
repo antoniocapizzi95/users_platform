@@ -4,17 +4,23 @@
     <md-button goto="/settings" class="font_size_button">Settings</md-button>
 </div>
 
-<div layout="row" layout-align="center center" layout padding>
-    <md-card layout-padding>
-        <md-input-container>
-            <label>Server Address</label>
-            <input name="address" ng-model="Settings.address" required>
-        </md-input-container>
-        <md-button ng-click="Settings.changeServer()">Change Server</md-button>
-        <div>{{Settings.message}}</div>
-    </md-card>
-    <md-card layout="column" layout-padding>
-        <div>User logged: {{Settings.user}}</div>
-        <md-button ng-click="Settings.logout()">Logout</md-button>
-    </md-card>
+<div layout="column" layout padding>
+    <div layout="row">
+        <md-card layout-padding>
+            <md-input-container>
+                <label>Server Address</label>
+                <input name="address" ng-model="Settings.address" required>
+            </md-input-container>
+            <md-button class="md-raised font_size_button" ng-click="Settings.changeServer()">Change Server</md-button>
+            <div>{{Settings.message}}</div>
+        </md-card>
+        <md-card layout="column" layout-padding>
+            <md-input-container>
+                <label>User logged</label>
+                <input name="user" ng-model="Settings.user" disabled>
+            </md-input-container>
+            <md-button class="md-raised font_size_button" ng-click="Settings.logout()">Logout</md-button>
+        </md-card>
+    </div>
+
 </div>

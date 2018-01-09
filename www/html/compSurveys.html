@@ -7,7 +7,7 @@
 <div layout="column" ng-show="CompSurveys.list" layout-padding>
     <h2 class="md-title" layout-padding>Compiled Surveys</h2>
     <div layout="row" layout-wrap>
-        <md-card layout="column" layout-padding ng-repeat="ans in CompSurveys.answers" ng-click="CompSurveys.showThisResult(ans.object)" class="pointer">
+        <md-card layout="column" layout-padding ng-repeat="ans in CompSurveys.answers" ng-click="CompSurveys.showThisResult(ans)" class="pointer">
             <div>{{ans.object.surv_name}}</div>
             <div>{{ans.object.date}}</div>
             <div>{{ans.object.place}}</div>
@@ -17,7 +17,7 @@
 </div>
 
 <div layout="column" ng-hide="CompSurveys.list" layout-padding>
-    <h2 class="md-title" >Results of: {{CompSurveys.selectedSurv.surv_name}}</h2>
+    <h2 class="md-title" >Result of: {{CompSurveys.selectedSurv.surv_name}}</h2>
     <div class="md-subhead">Description: {{CompSurveys.selectedSurv.description}}</div>
 
     <div>Date: {{CompSurveys.selectedSurv.date}}</div>
@@ -30,6 +30,10 @@
         <div>Question {{$index + 1}}: {{q}}</div>
         <div>Answer {{$index + 1}}: {{CompSurveys.selectedSurv.answers[$index]}}</div>
     </div>
-    <md-button ng-click="CompSurveys.list = true" class="font_size_button">Back</md-button>
+    <div layout="row">
+        <md-button ng-click="CompSurveys.list = true" class="font_size_button">Back</md-button>
+        <md-button ng-click="CompSurveys.deleteThisResult(CompSurveys.selectedID, $event)" class="font_size_button">Delete this result</md-button>
+    </div>
+
 
 </div>

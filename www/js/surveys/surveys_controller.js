@@ -4,7 +4,7 @@
 
     angular.module('myApp.surveys', ['ngRoute'])
         .controller('surveysCtrl', surveysCtrl);
-    surveysCtrl.$inject = ['$http','LoginService'];
+    surveysCtrl.$inject = ['$http','LoginService','$mdDateLocale'];
 
     function surveysCtrl($http,LoginService) {
 
@@ -19,6 +19,9 @@
         vm.note = '';
 
         vm.message = '';
+
+
+
 
         function getAssociations() {
             var param = JSON.stringify({id:LoginService.id,source:"up"});
@@ -62,10 +65,11 @@
         }
         vm.confirm = function () {
             if(vm.place == '' || vm.date == '') {
-                vm.message ='Required fields is empty'
+                vm.message = 'Required fields is empty'
 
             } else {
-                var obj = {surv_name:vm.selectedSurvey.name, description:vm.selectedSurvey.description,user:LoginService.username,date:vm.date,note:vm.note,place: vm.place,questions:vm.selectedSurvey.questions,answers: vm.answers};
+                var date = vm.date.toString().substring(4,15);
+                var obj = {surv_name:vm.selectedSurvey.name, description:vm.selectedSurvey.description,user:LoginService.username,date:date,note:vm.note,place: vm.place,questions:vm.selectedSurvey.questions,answers: vm.answers};
                 var param = JSON.stringify(obj);
 
                 $http({
