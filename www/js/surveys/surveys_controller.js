@@ -9,7 +9,7 @@
     function surveysCtrl($http,LoginService) {
 
         var vm = this;
-        var associations = [];
+        var assignments = [];
         vm.surveys = [];
         vm.list = true;
         vm.selectedSurvey;
@@ -28,25 +28,25 @@
 
             $http({
                 method: 'GET',
-                url: 'http://'+LoginService.address+'/mydb/associations.php/'+param,
+                url: 'http://'+LoginService.address+'/mydb/assignments.php/'+param,
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })
                 .then(function (response) {
                     var input = JSON.parse(response.data);
-                    associations = input.records;
+                    assignments = input.records;
 
                 });
         }
         getAssociations();
 
         function getSurveys() {
-            $http.get("http://"+LoginService.address+"/mydb/surveys.php")
+            $http.get("http://"+LoginService.address+"/mydb/surveys.php/all")
                 .then(function (response) {
                     var input = JSON.parse(response.data);
                     var allSurv = input.records;
                     for(var i=0;i<allSurv.length;i++) {
-                        for(var j = 0; j<associations.length; j++) {
-                            if(allSurv[i].object.name == associations[j].surv_name) {
+                        for(var j = 0; j<assignments.length; j++) {
+                            if(allSurv[i].ID == assignments[j].surv_id) {
                                 vm.surveys.push(allSurv[i]);
                                 break;
                             }
@@ -69,7 +69,7 @@
 
             } else {
                 var date = vm.date.toString().substring(4,15);
-                var obj = {surv_name:vm.selectedSurvey.name, description:vm.selectedSurvey.description,user:LoginService.username,date:date,note:vm.note,place: vm.place,questions:vm.selectedSurvey.questions,answers: vm.answers};
+                var obj = {surv_id:vm.selectedSurvey.ID,username:LoginService.username,date:date,note:vm.note,place: vm.place,answers: vm.answers};
                 var param = JSON.stringify(obj);
 
                 $http({

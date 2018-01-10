@@ -12,6 +12,7 @@
         vm.answers = [];
         vm.list = true;
         vm.selectedSurv;
+        vm.selectedAnswer;
         vm.selectedID;
         $http({
             method: 'GET',
@@ -22,16 +23,38 @@
                 var input = JSON.parse(response.data);
                 var allAnswers = input.records;
                 for(var i = 0; i<allAnswers.length; i++) {
-                    if(allAnswers[i].object.user == LoginService.username) {
+                    if(allAnswers[i].username == LoginService.username) {
                         vm.answers.push(allAnswers[i]);
+                        $http({
+                            method: 'GET',
+                            url: 'http://'+LoginService.address+'/mydb/surveys.php/'+allAnswers[i].surv_id,
+                            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                        })
+                            .then(function (response) {
+                                var input = JSON.parse(response.data);
+                                var rec = input.records[0];
+                                vm.answers[vm.answers.length - 1].surv_name = rec.surv_name;
+
+                            });
                     }
                 }
 
             });
         vm.showThisResult = function(ans) {
             vm.list = false;
-            vm.selectedSurv = ans.object;
+            vm.selectedAnswer = ans;
             vm.selectedID = ans.ID;
+            $http({
+                method: 'GET',
+                url: 'http://'+LoginService.address+'/mydb/surveys.php/'+ans.surv_id,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })
+                .then(function (response) {
+                    var input = JSON.parse(response.data);
+                    vm.selectedSurv = input.records[0];
+
+
+                });
         }
         
         vm.deleteThisResult = function (id,ev) {
@@ -63,6 +86,7 @@
             });
 
         }
+
 
 
     }

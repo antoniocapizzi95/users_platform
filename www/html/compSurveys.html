@@ -8,9 +8,9 @@
     <h2 class="md-title" layout-padding>Compiled Surveys</h2>
     <div layout="row" layout-wrap>
         <md-card layout="column" layout-padding ng-repeat="ans in CompSurveys.answers" ng-click="CompSurveys.showThisResult(ans)" class="pointer">
-            <div>{{ans.object.surv_name}}</div>
-            <div>{{ans.object.date}}</div>
-            <div>{{ans.object.place}}</div>
+            <div>{{ans.surv_name}}</div>
+            <div>{{ans.date}}</div>
+            <div>{{ans.place}}</div>
         </md-card>
     </div>
 
@@ -20,15 +20,15 @@
     <h2 class="md-title" >Result of: {{CompSurveys.selectedSurv.surv_name}}</h2>
     <div class="md-subhead">Description: {{CompSurveys.selectedSurv.description}}</div>
 
-    <div>Date: {{CompSurveys.selectedSurv.date}}</div>
-    <div>Place: {{CompSurveys.selectedSurv.place}}</div>
-    <div>note: {{CompSurveys.selectedSurv.note}}</div>
+    <div>Date: {{CompSurveys.selectedAnswer.date}}</div>
+    <div>Place: {{CompSurveys.selectedAnswer.place}}</div>
+    <div>note: {{CompSurveys.selectedAnswer.note}}</div>
 
     <div class="md-subhead">Questions/Answers:</div>
 
     <div ng-repeat="q in CompSurveys.selectedSurv.questions" layout="column">
         <div>Question {{$index + 1}}: {{q}}</div>
-        <div>Answer {{$index + 1}}: {{CompSurveys.selectedSurv.answers[$index]}}</div>
+        <div>Answer {{$index + 1}}: {{CompSurveys.selectedAnswer.answers[$index]}}</div>
     </div>
     <div layout="row">
         <md-button ng-click="CompSurveys.list = true" class="font_size_button">Back</md-button>
