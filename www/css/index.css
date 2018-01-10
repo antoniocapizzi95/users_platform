@@ -121,3 +121,7 @@ h1 {
 .font_size_button {
     font-size: 11px !important;
 }
+
+.font_size_button_toolbar {
+    font-size: 9px !important;
+}

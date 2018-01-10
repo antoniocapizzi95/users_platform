@@ -1,5 +1,17 @@
-<div layout="row" layout-align="start center" layout-padding>
-    <div layout="column">
+<div layout="column" flex>
+    <md-toolbar layout="row" layout-padding>
+        <div layout="column">
+
+            <div class="md-display-2">Surveys App</div>
+            <div class="md-headline">Users Platform</div>
+
+        </div>
+
+    </md-toolbar>
+
+</div>
+<div layout="row" layout-align="start center" layout-padding flex>
+    <div layout="column" flex>
         <md-input-container>
             <label>Server Address</label>
             <input name="address" ng-model="Login.address" required>
@@ -13,7 +25,10 @@
             <input name="password" type="password" ng-model="Login.password" required>
         </md-input-container>
         <div style="color:red">{{Login.message}}</div>
-        <md-button ng-click="Login.login()">Login</md-button>
+        <div layout="row" layout-align="center center">
+            <md-button ng-click="Login.login()">Login</md-button>
+
+        </div>
 
     </div>
 
