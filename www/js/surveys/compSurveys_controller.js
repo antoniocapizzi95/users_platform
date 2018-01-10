@@ -31,9 +31,14 @@
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                         })
                             .then(function (response) {
-                                var input = JSON.parse(response.data);
-                                var rec = input.records[0];
-                                vm.answers[vm.answers.length - 1].surv_name = rec.surv_name;
+                                var input2 = JSON.parse(response.data);
+                                var rec = input2.records[0];
+                                //vm.answers[vm.answers.length - 1].surv_name = rec.surv_name;
+                                for(var j = 0; j<vm.answers.length; j++) {
+                                    if(vm.answers[j].surv_id == rec.ID) {
+                                        vm.answers[j].surv_name = rec.surv_name;
+                                    }
+                                }
 
                             });
                     }
