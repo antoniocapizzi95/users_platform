@@ -70,9 +70,11 @@
                 .cancel('Cancel');
 
             $mdDialog.show(confirm).then(function() {
+                var obj = {id:id,type:"simple"};
+                var param = JSON.stringify(obj);
                 $http({
                     method: 'DELETE',
-                    url: 'http://'+LoginService.address+'/mydb/answers.php/'+id,
+                    url: 'http://'+LoginService.address+'/mydb/answers.php/'+param,
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'}
                 })
                     .then(function (response) {
