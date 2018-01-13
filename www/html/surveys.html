@@ -6,6 +6,7 @@
             <div class="md-title">Users Platform</div>
 
         </div>
+        <div style="font-size:8px">User logged: {{Surveys.service.username}}</div>
         <div layout="row" flex>
             <md-button goto="/surveys" class="font_size_button_toolbar md-raised">Available Surveys</md-button>
             <md-button goto="/compSurveys" class="font_size_button_toolbar md-raised">Compiled Surveys</md-button>
@@ -22,7 +23,7 @@
     <div style="font-size:8px">Tap on a survey to compile it</div>
 
     <div layout="row" layout-wrap>
-        <md-card ng-repeat="surv in Surveys.surveys" layout-padding ng-click="Surveys.selectSurvey(surv)" class="pointer">
+        <md-card ng-repeat="surv in Surveys.surveys | orderBy:'surv_name'" layout-padding ng-click="Surveys.selectSurvey(surv)" class="pointer">
             {{surv.surv_name}}
         </md-card>
     </div>

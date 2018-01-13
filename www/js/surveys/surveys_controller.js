@@ -9,6 +9,7 @@
     function surveysCtrl($http,LoginService) {
 
         var vm = this;
+        vm.service = LoginService;
         var assignments = [];
         vm.surveys = [];
         vm.list = true;

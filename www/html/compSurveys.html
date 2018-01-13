@@ -6,6 +6,7 @@
             <div class="md-title">Users Platform</div>
 
         </div>
+        <div style="font-size:8px">User logged: {{CompSurveys.service.username}}</div>
         <div layout="row">
             <md-button goto="/surveys" class="font_size_button_toolbar md-raised">Available Surveys</md-button>
             <md-button goto="/compSurveys" class="font_size_button_toolbar md-raised">Compiled Surveys</md-button>
@@ -21,7 +22,7 @@
     <h2 class="md-title" layout-padding>Compiled Surveys</h2>
     <div style="font-size:8px">Tap on a compiled survey to show it</div>
     <div layout="row" layout-wrap>
-        <md-card layout="column" layout-padding ng-repeat="ans in CompSurveys.answers" ng-click="CompSurveys.showThisResult(ans)" class="pointer">
+        <md-card layout="column" layout-padding ng-repeat="ans in CompSurveys.answers | orderBy:'date'" ng-click="CompSurveys.showThisResult(ans)" class="pointer">
             <div>Survey Name: <b>{{ans.surv_name}}</b></div>
             <div>Date: <b>{{ans.date}}</b></div>
             <div>Place: <b>{{ans.place}}</b></div>

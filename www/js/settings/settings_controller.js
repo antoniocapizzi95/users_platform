@@ -9,6 +9,7 @@
     function settingsCtrl($http,LoginService,$location) {
 
         var vm = this;
+        vm.service = LoginService;
         vm.address = LoginService.address;
         vm.user = LoginService.username;
         vm.message = '';

@@ -9,6 +9,7 @@
     function compSurveysCtrl($http,LoginService,$mdDialog) {
 
         var vm = this;
+        vm.service = LoginService;
         vm.answers = [];
         vm.list = true;
         vm.selectedSurv;
