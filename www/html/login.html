@@ -1,3 +1,4 @@
+<!--In questo file html è contenuta la struttura della pagina di login-->
 <div layout="column" flex>
     <md-toolbar layout="row" layout-padding>
         <div layout="column">
@@ -14,7 +15,8 @@
     <div layout="column" flex>
         <md-input-container>
             <label>Server Address</label>
-            <input name="address" ng-model="Login.address" required>
+            <input name="address" ng-model="Login.address" required> <!--I vari ng-model creano un collegamento tra l'input e la variabile scritta tra virgolette se si modifica il contenuto
+                                                                           degli input dall'interfaccia grafica, si modifica anche il contenuto della variabile nel controller-->
         </md-input-container>
         <md-input-container>
             <label>Username</label>

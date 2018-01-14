@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+//In questo file js c'è l'avvio di cordova (questo è codice di default)
 var app = {
     // Application Constructor
     initialize: function() {

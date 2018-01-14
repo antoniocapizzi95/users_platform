@@ -1,3 +1,4 @@
+<!--In questo file html è presente la struttura della pagina Settings-->
 <div layout="column" flex>
     <md-toolbar layout="column" layout-padding>
         <div layout="column">
@@ -24,7 +25,7 @@
                 <label>Server Address</label>
                 <input name="address" ng-model="Settings.address" required>
             </md-input-container>
-            <md-button class="md-raised font_size_button" ng-click="Settings.changeServer()">Change Server</md-button>
+            <md-button class="md-raised font_size_button" ng-click="Settings.changeServer()">Change Server</md-button> <!--Nella direttiva ng-click viene inserito il riferimento alla funziona da eseguire quando si fa click sul pulsante-->
             <div>{{Settings.message}}</div>
         </md-card>
         <md-card layout="column" layout-padding>

@@ -1,4 +1,5 @@
-<div layout="column" flex>
+<!--In questo file html c'è la struttura della pagina da cui si vedono le survey compilate -->
+<div layout="column" flex> <!--I vari layout="row" o layout="column" servono a definire se i div figli saranno posizionati in riga o in colonna-->
     <md-toolbar layout="column" layout-padding>
         <div layout="column">
 
@@ -8,8 +9,8 @@
         </div>
         <div style="font-size:8px">User logged: {{CompSurveys.service.username}}</div>
         <div layout="row">
-            <md-button goto="/surveys" class="font_size_button_toolbar md-raised">Available Surveys</md-button>
-            <md-button goto="/compSurveys" class="font_size_button_toolbar md-raised">Compiled Surveys</md-button>
+            <md-button goto="/surveys" class="font_size_button_toolbar md-raised">Available Surveys</md-button> <!--La direttiva goto è stata creata ad hoch per far si che quando si clicca sul bottone viene cambiata pagina -->
+            <md-button goto="/compSurveys" class="font_size_button_toolbar md-raised">Compiled Surveys</md-button> <!--Gli md-button sono dei bottoni con una grafica in stile Material Design-->
             <md-button goto="/settings" class="font_size_button_toolbar md-raised">Settings</md-button>
         </div>
 
@@ -19,10 +20,11 @@
 
 
 <div layout="column" ng-show="CompSurveys.list" layout-padding>
-    <h2 class="md-title" layout-padding>Compiled Surveys</h2>
+    <h2 class="md-title" layout-padding>Compiled Surveys</h2> <!-- qui vengono visualizzate tutte le compilazioni effettuate dall'utente-->
     <div style="font-size:8px">Tap on a compiled survey to show it</div>
     <div layout="row" layout-wrap>
-        <md-card layout="column" layout-padding ng-repeat="ans in CompSurveys.answers | orderBy:'date'" ng-click="CompSurveys.showThisResult(ans)" class="pointer">
+        <md-card layout="column" layout-padding ng-repeat="ans in CompSurveys.answers | orderBy:'date'" ng-click="CompSurveys.showThisResult(ans)" class="pointer"> <!-- la direttiva ng-repeat crea tante copie del div in cui viene messa
+                                                                                                                                                                     tante quante sono gli elementi contenuti nell'array tra parentesi, in questo caso l'array è CompSurveys.answers-->
             <div>Survey Name: <b>{{ans.surv_name}}</b></div>
             <div>Date: <b>{{ans.date}}</b></div>
             <div>Place: <b>{{ans.place}}</b></div>
@@ -30,8 +32,8 @@
     </div>
 
 </div>
-
-<div layout="column" ng-hide="CompSurveys.list" layout-padding>
+<!--I vari ng-show o ng-hide servono a nascondere o a mostrare i div a cui è applicato in base alla variabile che si passa tra virgolette (deve essere booleana)-->
+<div layout="column" ng-hide="CompSurveys.list" layout-padding> <!--Qui vengono visualizzati i dettagli delle compilazioni-->
     <h2 class="md-title" >Result of: {{CompSurveys.selectedSurv.surv_name}}</h2>
     <div class="md-subhead">Description: {{CompSurveys.selectedSurv.description}}</div>
 

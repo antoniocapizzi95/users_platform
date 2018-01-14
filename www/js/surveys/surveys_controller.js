@@ -1,5 +1,6 @@
 'use strict';
 
+//in questo file js è presente il controller della pagina "available surveys" cioè quella in cui si vedono le survey disponibili all'utente
 (function () {
 
     angular.module('myApp.surveys', ['ngRoute'])
@@ -24,7 +25,7 @@
 
 
 
-        function getAssociations() {
+        function getAssignments() { //questa funzione prende le assegnazioni alle survey in cui è presente l'id dell'utente
             var param = JSON.stringify({id:LoginService.id,source:"up"});
 
             $http({
@@ -38,16 +39,16 @@
 
                 });
         }
-        getAssociations();
+        getAssignments();
 
-        function getSurveys() {
+        function getSurveys() { //questa funzione prende le survey assegnate all'utente
             $http.get("http://"+LoginService.address+"/mydb/surveys.php/all")
                 .then(function (response) {
                     var input = JSON.parse(response.data);
                     var allSurv = input.records;
                     for(var i=0;i<allSurv.length;i++) {
                         for(var j = 0; j<assignments.length; j++) {
-                            if(allSurv[i].ID == assignments[j].surv_id) {
+                            if(allSurv[i].ID == assignments[j].surv_id) { //qui vengono filtrate le survey e vengono prese solo quelle assegnate all'utente
                                 vm.surveys.push(allSurv[i]);
                                 break;
                             }
@@ -57,14 +58,14 @@
         }
         getSurveys();
 
-        vm.selectSurvey = function (surv) {
+        vm.selectSurvey = function (surv) { //questa funzione viene eseguita quando si clicca su una survey per compilarla
             vm.selectedSurvey = surv;
             vm.list = false;
             for(var i = 0; i<vm.selectedSurvey.questions.length; i++) {
                 vm.answers.push("");
             }
         }
-        vm.confirm = function () {
+        vm.confirm = function () { //questa funzione viene eseguita quando si conferma la compilazione di una survey
             if(vm.place == '' || vm.date == '') {
                 vm.message = 'Required fields is empty'
 
@@ -92,7 +93,7 @@
 
 
         }
-        vm.cancel = function () {
+        vm.cancel = function () { //questa funzione viene eseguita quando si preme il tasto cancel nella compilazione di una survey
             vm.list = true;
             vm.answers = [];
             vm.selectedSurvey = undefined;

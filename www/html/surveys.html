@@ -1,3 +1,4 @@
+<!--In questo file html c'è la struttura della pagina da cui si vedono le survey assegnate e si possono compilare-->
 <div layout="column" flex>
     <md-toolbar layout="column" layout-padding>
         <div layout="column">
@@ -17,20 +18,21 @@
 
 </div>
 
-<div ng-show="Surveys.list" layout="column" layout-padding>
+<div ng-show="Surveys.list" layout="column" layout-padding> <!--I vari ng-show o ng-hide servono a nascondere o a mostrare i div a cui è applicato in base alla variabile che si passa tra virgolette (deve essere booleana)-->
 
     <h2 class="md-title" layout-padding>Available Surveys</h2>
     <div style="font-size:8px">Tap on a survey to compile it</div>
 
-    <div layout="row" layout-wrap>
-        <md-card ng-repeat="surv in Surveys.surveys | orderBy:'surv_name'" layout-padding ng-click="Surveys.selectSurvey(surv)" class="pointer">
+    <div layout="row" layout-wrap> <!--Qua viene visualizzato l'elenco di sondaggi-->
+        <md-card ng-repeat="surv in Surveys.surveys | orderBy:'surv_name'" layout-padding ng-click="Surveys.selectSurvey(surv)" class="pointer"> <!-- la direttiva ng-repeat crea tante copie del div in cui viene messa
+                                                                                                                                                                     tante quante sono gli elementi contenuti nell'array tra parentesi, in questo caso l'array è surv in Surveys.surveys-->
             {{surv.surv_name}}
         </md-card>
     </div>
 
 
 </div>
-<div ng-hide="Surveys.list" layout="column" layout-padding>
+<div ng-hide="Surveys.list" layout="column" layout-padding> <!--Qui c'è la struttura della pagina da cui si compilano i sondaggi-->
     <div class="md-title">Compile the survey: <b style="font-size:24px">{{Surveys.selectedSurvey.surv_name}}</b></div>
     <div class="md-subhead">Description: {{Surveys.selectedSurvey.description}}</div>
     <div layout="row" layout-align="start center">
