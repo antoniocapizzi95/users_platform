@@ -27,11 +27,11 @@
             })
                 .success(function (response) {
                     var input = JSON.parse(response);
-                    var resp = input.records[0].result; //se result è true, l'utente esiste, le credenziali sono corrette e il login avviene correttamente
+                    var resp = input.records[0].result;
                     var id = input.records[0].id;
                     var admin = input.records[0].admin;
-                    if(resp && !admin) {
-                        LoginService.address = vm.address; //qui vengono settati gli attributi del servizio LoginService (contenuto in js/services/login_service.js
+                    if(resp && !admin) { //se resp è true e admin è false, l'utente esiste, le credenziali sono corrette e il login avviene correttamente
+                        LoginService.address = vm.address; //qui vengono settati gli attributi del servizio LoginService (contenuto in js/services/login_service.js), queste variabili saranno reperibili da qualsiasi controller dell'applicazione
                         LoginService.username = vm.username;
                         LoginService.password = vm.password;
                         LoginService.id = id;

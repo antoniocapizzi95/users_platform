@@ -3,7 +3,7 @@ var usersplat = angular.module("myApp", ['ngRoute','ngMaterial','myApp.login','m
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/login', {
-                templateUrl: "html/login.html", //qui viene definito come devono essere avviate le varie pagine dell'applicazione, in questo caso quando ci troviamo in /login, viene settata la pagina login/html come template
+                templateUrl: "html/login.html", //qui vengono definite le rotte e viene definito come devono essere avviate le varie pagine dell'applicazione, in questo caso quando ci troviamo in /login, viene settata la pagina html/login.html come template
                 controller: 'loginCtrl',        //viene settato come controller della pagina "loginCtrl" contenuto in js/login/login_controller.js
                 controllerAs: 'Login'           //e viene settato un alias per il controller in modo che sia reperibile sull'html
             })                                  //lo stesso avviene successivamente per le altre pagine
@@ -30,5 +30,5 @@ var usersplat = angular.module("myApp", ['ngRoute','ngMaterial','myApp.login','m
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');
 
-        $routeProvider.otherwise({redirectTo: '/login'});
+        $routeProvider.otherwise({redirectTo: '/login'}); //all'avvio dell'applicazione viene messa la pagina /login
     }]);
