@@ -9,8 +9,8 @@
 
     function loginCtrl($http,$location,LoginService) {
 
-        var vm = this;
-        vm.username = '';
+        var vm = this; //qui viene associato il controller (this) alla variabile vm
+        vm.username = '';          //qui vengono associate delle variabili al controller, queste variabili saranno disponibili sulla pagina html come Login.nomevariabile
         vm.password = '';
         vm.address = 'antoniocapizzi95.altervista.org'; //di default il server address è stato settato su antoniocapizzi95.altervista.org
         vm.message = '';

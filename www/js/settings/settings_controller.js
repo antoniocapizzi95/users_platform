@@ -9,8 +9,8 @@
 
     function settingsCtrl($http,LoginService,$location) {
 
-        var vm = this;
-        vm.service = LoginService;
+        var vm = this; //qui viene associato il controller (this) alla variabile vm
+        vm.service = LoginService;               //qui vengono associate delle variabili al controller, queste variabili saranno disponibili sulla pagina html come Settings.nomevariabile
         vm.address = LoginService.address;
         vm.user = LoginService.username;
         vm.message = '';

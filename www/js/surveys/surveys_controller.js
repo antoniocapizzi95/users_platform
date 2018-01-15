@@ -9,11 +9,11 @@
 
     function surveysCtrl($http,LoginService) {
 
-        var vm = this;
-        vm.service = LoginService;
+        var vm = this; //qui viene associato il controller (this) alla variabile vm
+        vm.service = LoginService; //qui vengono associate delle variabili al controller, queste variabili saranno disponibili sulla pagina html come Surveys.nomevariabile
         var assignments = [];
         vm.surveys = [];
-        vm.list = true;
+        vm.list = true; //questa variabile serve a far comparire la lista delle survey se è true, se è false, comparirà la pagina da cui si può compilare la survey selezionata
         vm.selectedSurvey;
         vm.answers = [];
         vm.date = '';
@@ -74,7 +74,7 @@
                 var obj = {surv_id:vm.selectedSurvey.ID,username:LoginService.username,date:date,note:vm.note,place: vm.place,answers: vm.answers};
                 var param = JSON.stringify(obj);
 
-                $http({
+                $http({ //nel caso in cui tutti i dati sono corretti, con una richiesta post al file answers.php vengono scritte sul database le risposte al sondaggio
                     method: 'POST',
                     url: 'http://'+LoginService.address+'/mydb/answers.php',
                     data: "message=" + param,

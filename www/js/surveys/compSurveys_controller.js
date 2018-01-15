@@ -9,9 +9,9 @@
 
     function compSurveysCtrl($http,LoginService,$mdDialog) {
 
-        var vm = this;
+        var vm = this; //qui viene associato il controller (this) alla variabile vm
         vm.service = LoginService;
-        vm.answers = [];
+        vm.answers = [];         //qui vengono associate delle variabili al controller, queste variabili saranno disponibili sulla pagina html come CompSurveys.nomevariabile
         vm.list = true;
         vm.selectedSurv;
         vm.selectedAnswer;
